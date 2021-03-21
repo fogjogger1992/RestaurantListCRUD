@@ -79,10 +79,16 @@ app.post('/restaurants/:id/edit', (req, res) => {
 
 // querystring
 app.get('/search', (req, res) => {
-  const restaurants = restaurantList.results.filter((restaurant) => {
-    return restaurant.name.toLowerCase().includes(req.query.keyword.toLowerCase())
+  const keyword = req.query.keyword.toLowerCase()
+  Restaurants.find({
+    '$or': [
+      { name: { $regex: keyword, $options: 'si' } },
+      { category: { $regex: keyword, $options: 'si' } }
+    ]
   })
-  res.render('index', { restaurants: restaurants, keyword: req.query.keyword })
+    .lean()
+    .then(restaurant => res.render('index', { restaurants: restaurant }))
+    .catch(error => console.log(error))
 })
 
 // start and listen on the Express server

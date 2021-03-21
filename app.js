@@ -3,7 +3,7 @@ const app = express()
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const exphbs = require('express-handlebars')
-const restaurantList = require('./restaurant.json')
+const Restaurants = require('./models/restaurants')
 const port = 3000
 
 // connection
@@ -31,14 +31,22 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // routes setting
+
+// get restaurant datas
 app.get('/', (req, res) => {
-  res.render('index', { restaurants: restaurantList.results })
+  Restaurants.find()
+    .lean()
+    .then(restaurants => res.render('index', { restaurants: restaurants }))
+    .catch(error => console.log(error))
 })
 
-app.get('/restaurants/:restaurant_id', (req, res) => {
-  const restaurant = restaurantList.results.find(restaurant => restaurant.id.toString() === req.params.restaurant_id)
-
-  res.render('show', { restaurant: restaurant })
+// show
+app.get('/restaurants/:id', (req, res) => {
+  const id = req.params.id
+  Restaurants.findById(id)
+    .lean()
+    .then(restaurant => res.render('show', { restaurant: restaurant }))
+    .catch(error => console.log(error))
 })
 
 // querystring

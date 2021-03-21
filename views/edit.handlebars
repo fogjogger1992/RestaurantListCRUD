@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-10 mx-auto py-5">
+
+      <form action="/restaurants/{{restaurant._id}}/edit" method="POST">
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">餐廳名稱</span>
+          </div>
+          <input type="text" class="form-control" placeholder="name" name="name" value="{{ restaurant.name }}">
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">餐廳名稱 EN</span>
+          </div>
+          <input type="text" class="form-control" placeholder="name_en" name="name_en" value="{{ restaurant.name_en }}">
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">類別</span>
+          </div>
+          <input type="text" class="form-control" placeholder="category" name="category"
+            value="{{ restaurant.category }}">
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">圖片</span>
+          </div>
+          <input type="text" class="form-control" placeholder="image" name="image" value="{{ restaurant.image }}">
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">地址</span>
+          </div>
+          <input type="text" class="form-control" placeholder="location" name="location"
+            value="{{ restaurant.location }}">
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">電話</span>
+          </div>
+          <input type="text" class="form-control" placeholder="phone" name="phone" value="{{ restaurant.phone }}">
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Google Map</span>
+          </div>
+          <input type="text" class="form-control" placeholder="google_map" name="google_map"
+            value="{{ restaurant.google_map }}">
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">評分</span>
+          </div>
+          <input type="text" class="form-control" placeholder="rating" name="rating" value="{{ restaurant.rating }}">
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">說明</span>
+          </div>
+          <textarea class="form-control" placeholder="description"
+            name="description">{{ restaurant.description }}</textarea>
+        </div>
+
+        <div class="row mt-2 px-3 mb-5 justify-content-center">
+          <a href="/" class="btn btn-primary btn-sm mr-2" role="button" aria-pressed="true">Back</a>
+          <button type="submit" class="btn btn-success btn-sm mr-2">Save</button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>

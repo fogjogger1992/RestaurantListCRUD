@@ -38,4 +38,14 @@
         style="max-width: 600px;">
     </div>
   </div>
+
+  <div class="row mt-2 px-3 mb-5 justify-content-center">
+    <a href="/" class="btn btn-primary btn-sm mr-2" role="button" aria-pressed="true">Back</a>
+    <form action="/restaurants/{{restaurant._id}}/edit" method="GET">
+      <button type="submit" class="btn btn-outline-dark btn-sm mr-2">Edit</button>
+    </form>
+    <form action="/restaurants/{{restaurant._id}}/delete" method="POST">
+      <button type="submit" class="btn btn-outline-danger btn-sm mr-2">Delete</button>
+    </form>
+  </div>
 </div>

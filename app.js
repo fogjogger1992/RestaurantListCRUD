@@ -1,8 +1,23 @@
 const express = require('express')
 const app = express()
+const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
 const exphbs = require('express-handlebars')
 const restaurantList = require('./restaurant.json')
 const port = 3000
+
+// connection
+mongoose.connect('mongodb://localhost/restaurant_list', { useNewUrlParser: true, useUnifiedTopology: true })
+
+const db = mongoose.connection
+
+db.on('error', () => {
+  console.log('mongodb error')
+})
+
+db.once('open', () => {
+  console.log('mongodb connected')
+})
 
 // express template engine
 // handlebars
@@ -11,6 +26,9 @@ app.set('view engine', 'handlebars')
 
 // setting static files
 app.use(express.static('public'))
+
+// setting body-parser
+app.use(bodyParser.urlencoded({ extended: true }))
 
 // routes setting
 app.get('/', (req, res) => {

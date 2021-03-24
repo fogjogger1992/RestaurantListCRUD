@@ -8,63 +8,74 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default">餐廳名稱</span>
           </div>
-          <input type="text" class="form-control" placeholder="餐廳名稱" name="name">
+          <input type="text" class="form-control" placeholder="餐廳名稱" name="name" required>
         </div>
 
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default">餐廳名稱 EN</span>
           </div>
-          <input type="text" class="form-control" placeholder="餐廳名稱 EN" name="name_en">
+          <input type="text" class="form-control" placeholder="餐廳名稱 EN" name="name_en" required>
         </div>
 
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default">類別</span>
           </div>
-          <input type="text" class="form-control" placeholder="餐廳類別" name="category">
+          <input list="categories" class="form-control" placeholder="請選擇或新增餐廳類別" name="category" required>
+          <datalist id="categories">
+            <option>中東料理</option>
+            <option>日本料理</option>
+            <option>義式餐廳</option>
+            <option>美式</option>
+            <option>酒吧</option>
+            <option>咖啡</option>
+          </datalist>
         </div>
 
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default">圖片</span>
           </div>
-          <input type="text" class="form-control" placeholder="圖片網址" id="inputGroup-sizing-default" name="image">
+          <input type="url" class="form-control" placeholder="圖片網址 (網址結尾應為 .jpg, .png, .gif)"
+            id="inputGroup-sizing-default" name="image" pattern="https?://.+.(jpg|png|gif)" required>
         </div>
 
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default">地址</span>
           </div>
-          <input type="text" class="form-control" placeholder="餐廳地址" name="location">
+          <input type="text" class="form-control" placeholder="餐廳地址" name="location" required>
         </div>
 
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default">電話</span>
           </div>
-          <input type="text" class="form-control" placeholder="電話號碼" name="phone">
+          <input type="tel" class="form-control" placeholder="電話號碼" name="phone" required>
         </div>
 
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default">Google Map</span>
           </div>
-          <input type="text" class="form-control" placeholder="Google Map 連結" name="google_map">
+          <input type="url" class="form-control" placeholder="Google Map 連結" name="google_map" pattern="https?://.+"
+            required>
         </div>
 
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default">評分</span>
           </div>
-          <input type="text" class="form-control" placeholder="網路評分" name="rating">
+          <input type="num" class="form-control" placeholder="網路評分 (請輸入 0.0 - 5.0)" name="rating"
+            pattern="[0-9]{1}.[0-9]{1}" required>
         </div>
 
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default">說明</span>
           </div>
-          <textarea class="form-control" placeholder="詳細說明" name="description"></textarea>
+          <textarea class="form-control" placeholder="詳細說明" name="description" required></textarea>
         </div>
 
         <div class="row mt-2 px-3 mb-5 justify-content-center">

@@ -40,6 +40,20 @@ app.get('/', (req, res) => {
     .catch(error => console.log(error))
 })
 
+// querystring
+app.get('/restaurants/search', (req, res) => {
+  const keyword = req.query.keyword.toLowerCase()
+  Restaurants.find({
+    '$or': [
+      { name: { $regex: keyword, $options: 'si' } },
+      { category: { $regex: keyword, $options: 'si' } }
+    ]
+  })
+    .lean()
+    .then(restaurant => res.render('index', { restaurants: restaurant }))
+    .catch(error => console.log(error))
+})
+
 // show
 app.get('/restaurants/:id', (req, res) => {
   const id = req.params.id
@@ -104,20 +118,6 @@ app.post('/restaurants/:id/delete', (req, res) => {
   return Restaurants.findById(id)
     .then(restaurant => restaurant.remove())
     .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
-})
-
-// querystring
-app.get('/search', (req, res) => {
-  const keyword = req.query.keyword.toLowerCase()
-  Restaurants.find({
-    '$or': [
-      { name: { $regex: keyword, $options: 'si' } },
-      { category: { $regex: keyword, $options: 'si' } }
-    ]
-  })
-    .lean()
-    .then(restaurant => res.render('index', { restaurants: restaurant }))
     .catch(error => console.log(error))
 })
 

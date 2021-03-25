@@ -48,21 +48,29 @@ router.get('/:id/edit', (req, res) => {
 
 router.put('/:id', (req, res) => {
   const id = req.params.id
-  return Restaurants.findById(id)
-    .then(restaurant => {
-      restaurant.name = req.body.name,
-        restaurant.name_en = req.body.name_en,
-        restaurant.category = req.body.category,
-        restaurant.image = req.body.image,
-        restaurant.location = req.body.location,
-        restaurant.phone = req.body.phone,
-        restaurant.google_map = req.body.google_map,
-        restaurant.rating = req.body.rating,
-        restaurant.description = req.body.description
-      return restaurant.save()
-    })
-    .then(() => res.redirect(`/restaurants/${id}`))
-    .catch(error => console.log(error))
+  const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
+  if (Object.values(req.body).indexOf('') === -1) {
+    return Restaurants.findById(id)
+      .then(restaurant => {
+        restaurant.name = name,
+          restaurant.name_en = name_en,
+          restaurant.category = category,
+          restaurant.image = image,
+          restaurant.location = location,
+          restaurant.phone = phone,
+          restaurant.google_map = google_map,
+          restaurant.rating = rating,
+          restaurant.description = description
+        return restaurant.save()
+      })
+      .then(() => res.redirect(`/restaurants/${id}`))
+      .catch(error => console.log(error))
+  } else {
+    Restaurants.findById(id)
+      .lean()
+      .then(restaurant => res.render('edit', { restaurant: restaurant }))
+      .catch(error => console.log(error))
+  }
 })
 
 // D

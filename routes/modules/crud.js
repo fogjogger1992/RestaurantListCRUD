@@ -8,29 +8,24 @@ router.get('/new', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  const name = req.body.name
-  const name_en = req.body.name_en
-  const category = req.body.category
-  const image = req.body.image
-  const location = req.body.location
-  const phone = req.body.phone
-  const google_map = req.body.google_map
-  const rating = req.body.rating
-  const description = req.body.description
-
-  return Restaurants.create({
-    name: name,
-    name_en: name_en,
-    category: category,
-    image: image,
-    location: location,
-    phone: phone,
-    google_map: google_map,
-    rating: rating,
-    description: description,
-  })
-    .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
+  const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
+  if (Object.values(req.body).indexOf('') === -1) {
+    return Restaurants.create({
+      name: name,
+      name_en: name_en,
+      category: category,
+      image: image,
+      location: location,
+      phone: phone,
+      google_map: google_map,
+      rating: rating,
+      description: description
+    })
+      .then(() => res.redirect('/'))
+      .catch(error => console.log(error))
+  } else {
+    res.render('new', { name, name_en, category, image, location, phone, google_map, rating, description })
+  }
 })
 
 // R

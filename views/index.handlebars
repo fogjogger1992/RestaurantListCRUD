@@ -1,12 +1,11 @@
 <!-- ./views/index.handlebars -->
 <div class="container mt-5">
 
-  <!-- search bar -->
-  <div class="container search-bar">
-    <div class="search-bar-outer">
-      <div class="search-bar-inner">
+  <div class="col-md-10 col-12 mx-auto">
+    <div class="row">
+      <!-- search bar -->
+      <div class="container search-bar col-md-5 col-12 mt-2 ml-0 justify-content-start">
         <form action="/restaurants/search">
-          <h4 class="mb-2">尋找餐廳：</h4>
           <div class="input-group">
             <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" value="{{keyword}}"
               aria-label="Restaurant Name..." aria-describedby="search-button">
@@ -15,6 +14,20 @@
             </div>
           </div>
         </form>
+      </div>
+
+      <!-- sort -->
+      <div class="btn-group col-md-2 col-12 mt-2">
+        <button type="button" class="btn btn-major dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          Sort
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/sort/name/asc">餐廳名稱 A -> Z</a>
+          <a class="dropdown-item" href="/sort/name/desc">餐廳名稱 Z -> A</a>
+          <a class="dropdown-item" href="/sort/rating/asc">評分 0.0 -> 5.0</a>
+          <a class="dropdown-item" href="/sort/rating/desc">評分 5.0 -> 0.0</a>
+        </div>
       </div>
     </div>
   </div>

@@ -45,7 +45,7 @@
                   <form action="/restaurants/{{this._id}}/edit" method="GET">
                     <button type="submit" class="btn btn-outline-dark btn-sm mr-2">Edit</button>
                   </form>
-                  <form action="/restaurants/{{this._id}}/delete" method="POST">
+                  <form action="/restaurants/{{this._id}}?_method=DELETE" method="POST">
                     <button type="submit" class="btn btn-outline-danger btn-sm mr-2">Delete</button>
                   </form>
                 </div>

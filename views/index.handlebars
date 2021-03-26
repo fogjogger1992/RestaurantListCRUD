@@ -17,10 +17,10 @@
       </div>
 
       <!-- sort -->
-      <div class="btn-group col-md-2 col-12 mt-2">
+      <div class="btn-group col-md-4 col-12 mt-2 mr-0">
         <button type="button" class="btn btn-major dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
           aria-expanded="false">
-          Sort
+          {{#if currentSelected}} {{currentSelected}} {{else}} Sort {{/if}}
         </button>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="/sort/name/asc">餐廳名稱 A -> Z</a>
